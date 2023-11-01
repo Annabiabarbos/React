@@ -8,6 +8,7 @@ import TiposEventosPage from "./pages/tiposEventoPage/TiposEvento.jsx";
 import LoginPage from "./pages/loginPage/LoginPage.jsx";
 import TestePage from "./pages/testePage/TestePage.jsx";
 
+
 const Rotas = () => {
   return (
     <BrowserRouter>

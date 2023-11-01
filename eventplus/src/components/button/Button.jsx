@@ -2,7 +2,8 @@ import React from 'react';
 
 const Button = ({textButton , type}) => {
     return (
-        <button type= {type}>
+        <button 
+        type= {type}>
             {textButton}
         </button>
     );
