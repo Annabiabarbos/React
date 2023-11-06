@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 
 import Container from "../container/Container";
@@ -9,16 +9,21 @@ import menubar from "../../assets/images/menubar.png";
 
 
 const Header = () => {
+
+  const [exibeNavbar, setExibeNavbar] = useState(false); //exibe e esconde o menu
+
   return (
-    <header className="header-page">
+    <header className="headerpage">
       <Container>
         <div className="header-flex">
           <img
             src={menubar}
             alt="Imagem menu de barras. Serve para exibir ou esconder o menu no mobile"
+            onClick={() => {setExibeNavbar(true)}}
+            className="headerpage__menubar"
           />
 
-          <Nav />
+          <Nav exibeNavbar = {exibeNavbar} setExibeNavbar = {setExibeNavbar}/>
           <PerfilUsuario />
         </div>
       </Container>

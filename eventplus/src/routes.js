@@ -4,7 +4,7 @@ import Header from "./components/header/Header.jsx";
 
 import EventosPage from "./pages/eventosPage/EventosPage.jsx";
 import HomePage from "./pages/homePage/HomePage.jsx";
-import TiposEventosPage from "./pages/tiposEventoPage/TiposEvento.jsx";
+import TiposEventosPage from "./pages/tiposEventoPage/TiposEvento";
 import LoginPage from "./pages/loginPage/LoginPage.jsx";
 import TestePage from "./pages/testePage/TestePage.jsx";
 
@@ -19,6 +19,7 @@ const Rotas = () => {
         <Route path="/tipos-evento" element={<TiposEventosPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/teste" element={<TestePage />} />
+        
       </Routes>
     </BrowserRouter>
   );
