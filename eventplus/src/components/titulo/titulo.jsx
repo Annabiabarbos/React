@@ -1,12 +1,19 @@
 import React from 'react';
+import './Titulo.css'
 
 
-const titulo = () => {
+const Titulo = ( {titleText, color = "", potatoClass =""}) => {
     return (
-        <div>
-            <h1>Titulo</h1>
-        </div>
+            <h1 className= {`title ${potatoClass}`} style = {{color : color}}>
+                {titleText}
+                <hr
+                    className='title__underscore' 
+                    style = {
+                        color !== "" ? {borderColor : color} : {} 
+                    }
+                />
+            </h1>
     );
 };
 
-export default titulo;
+export default Titulo;

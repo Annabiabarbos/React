@@ -1,23 +1,29 @@
 import React, { useState } from "react";
-import Button from "../../components/button/Button";
-import Input from "../../components/input/Input";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
+// import Header from '../../components/Header/Header';
 
 const TestePage = () => {
-  const [n1, setN1] = useState(0);
-  const [n2, setN2] = useState(0);
+  //variáveis do componente!
+  const [n1, setN1] = useState(0); //number
+  const [n2, setN2] = useState(0); //number
   const [total, setTotal] = useState();
 
   function handleCalcular(e) {
-    e.preventDefault();
+
+    e.preventDefault(); //event
     setTotal(parseFloat(n1) + parseFloat(n2));
+    
   }
 
   return (
     <div>
-      <h1>Pagina de Poc`s</h1>
+      {/* <Header /> */}
+
+      <h1>Página de Poc`s</h1>
       <h2>Calculator</h2>
 
-      <form onSubmit={handleCalcular}>
+      <form onSubmit={handleCalcular} >
         <Input
           type="number"
           placeholder="Primeiro número"
@@ -29,10 +35,9 @@ const TestePage = () => {
           }}
         />
         <br />
-
         <Input
           type="number"
-          placeholder="Segundo numero"
+          placeholder="Segundo número"
           name="n2"
           id="n2"
           value={n2}
@@ -43,10 +48,18 @@ const TestePage = () => {
 
         <br />
 
-        <Button textButton="Calcular" type="submit" />
-
-        <span>Resultado: {total}</span>
+        <Button
+          textButton="Calcular"
+          type="submit"
+        />
+        <span>
+          Resultado:
+          <strong>{total}</strong>
+        </span>
       </form>
+      
+      {/* <p>VALOR DO N1: {n1}</p>
+            <p>VALOR DO N2: {n2}</p> */}
     </div>
   );
 };

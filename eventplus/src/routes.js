@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/header/Header.jsx";
+import Header from "./components/Header/Header.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
-import EventosPage from "./pages/eventosPage/EventosPage.jsx";
-import HomePage from "./pages/homePage/HomePage.jsx";
-import TiposEventosPage from "./pages/tiposEventoPage/TiposEvento";
-import LoginPage from "./pages/loginPage/LoginPage.jsx";
-import TestePage from "./pages/testePage/TestePage.jsx";
+import EventosPage from "./pages/EventosPage/EventosPage.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+import TiposEventosPage from "./pages/TiposEventoPage/TiposEvento";
+import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import TestePage from "./pages/TestePage/TestePage.jsx";
 
 
 const Rotas = () => {
@@ -19,8 +20,9 @@ const Rotas = () => {
         <Route path="/tipos-evento" element={<TiposEventosPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/teste" element={<TestePage />} />
-        
+      
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

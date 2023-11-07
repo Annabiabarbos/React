@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Input = ({type, placeholder, name, id ,value , onChange}) => {
     return (
         <>
-            <input 
+            <Input 
             type ={type}
             placeholder={placeholder}
             name={name}

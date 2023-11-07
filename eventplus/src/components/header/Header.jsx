@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Header.css";
 
-import Container from "../container/Container";
-import Nav from "../nav/Nav";
+import Container from "../Container/Container";
+import Nav from "../Nav/Nav";
 import PerfilUsuario from "../perfilUsuario/PerfilUsuario";
 
 import menubar from "../../assets/images/menubar.png";
