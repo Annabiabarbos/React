@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-// import Header from '../../components/Header/Header';
+import Header from '../../components/Header/Header';
 
 const TestePage = () => {
   //variáveis do componente!

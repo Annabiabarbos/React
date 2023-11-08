@@ -17,7 +17,7 @@ const Nav = ({ exibeNavbar, setExibeNavbar }) => {
         X
       </span>
 
-      <Link to="/home" className="eventlogo">
+      <Link to="/" className="eventlogo">
         <img
           className="eventlogo__logo-image"
           src={window.innerWidth >= 992 ? logDesktop : logMobile}
@@ -26,11 +26,11 @@ const Nav = ({ exibeNavbar, setExibeNavbar }) => {
       </Link>
 
       <div className="navbar__items-box">
-        <Link to="/home" className="navbar__item">Home</Link>
+        <Link to="/" className="navbar__item">Home</Link>
         <Link to="/eventos" className="navbar__item">Eventos</Link>
         <Link to="/tipos-evento" className="navbar__item">Tipos Evento</Link>
         <Link to="/login" className="navbar__item">Login </Link>
-        <Link to="/teste" className="navbar__item">Teste</Link>
+        <Link to="/testes" className="navbar__item">Teste</Link>
       </div>
 
      
