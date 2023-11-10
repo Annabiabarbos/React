@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer.jsx";
 
 import EventosPage from "./pages/EventosPage/EventosPage.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
-import TiposEventosPage from "./pages/TiposEventoPage/TiposEvento";
+import TiposEventosPage from "./pages/TiposEventoPage/TiposEventoPage";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import TestePage from "./pages/TestePage/TestePage";
 
