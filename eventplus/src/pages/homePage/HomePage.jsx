@@ -19,7 +19,7 @@ const HomePage = () => {
   useEffect(()=> {
       async function getNextEvents() {
           try {
-              const promise = await api.get(nextEventResource);
+              const promise = await api.get(`${nextEventResource}`);
               const dados = await promise.data;
               // console.log(dados);
               setNextEvents(dados);//atualiza o state

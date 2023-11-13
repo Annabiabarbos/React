@@ -1,9 +1,10 @@
 import React from 'react';
+import Titulo from '../../components/Titulo/Titulo';
 
 const Eventos = () => {
     return (
         <div>
-            <h1>Eventos</h1>
+             <Titulo titleText="Eventos"/>        
         </div>
     );
 };

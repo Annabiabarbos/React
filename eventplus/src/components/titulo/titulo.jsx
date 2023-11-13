@@ -8,12 +8,12 @@ const Titulo = ( {titleText, color = "", potatoClass =""}) => {
                 {titleText}
                 <hr
                     className='title__underscore' 
-                    style = {
-                        color !== "" ? {borderColor : color} : {} 
-                    }
+                    style = {{borderColor : color}} 
+                    
                 />
             </h1>
     );
 };
 
 export default Titulo;
+

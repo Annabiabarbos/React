@@ -7,7 +7,7 @@ export const eventsResource = '/Evento'
 export const nextEventResource = '/Evento/ListarProximos'
 
 //Rota para o recurso Tipos De Evento 
-export const eventsTypeResource = '/Tiposevento'
+export const eventsTypeResource = '/TiposEvento'
 
 
 const apiPort = '7118';
