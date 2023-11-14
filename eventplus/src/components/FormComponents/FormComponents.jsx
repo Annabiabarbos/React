@@ -19,7 +19,7 @@ export const Input = ({
        value = {value}
        required = {required ? "requiered" : ""}
        placeholder = {placeholder}
-       manipulationFunction = {manipulationFunction}
+       onChange = {manipulationFunction}
        className = {`input-component ${additionalClass}`}
        autoComplete = "off"
        />
@@ -27,18 +27,18 @@ export const Input = ({
     );
 };
 
-export const label = () => {
+export const label = ({htmlFor , labelText}) => {
     return <label htmlFor={htmlFor}>{labelText} </label>
 }
 
 //componente criado na forma tradicional props ao invés do destructuring
-export const button = ( props ) => {
+export const Button = ( props ) => {
     return (
         <button
         id= {props.id}
         name = {props.name}
         type = {props.type}
-        className = {props.additionalClass}
+        className = {` button-component ${props.additionalClass}`}
         onClick = {props.manipulationFunction}
         >
             {props.textButton}
