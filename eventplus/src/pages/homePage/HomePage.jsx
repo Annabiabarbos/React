@@ -9,11 +9,13 @@ import Titulo from "../../components/Titulo/Titulo"
 import NextEvent from "../../components/NextEvent/NextEvent";
 import Container from "../../components/Container/Container";
 import { nextEventResource } from "../../Services/Services";
+import Notification from "../../components/Notification/Notification";
 
 import api from "../../Services/Services";
 
 const HomePage = () => {
   const [nextEvents, setNextEvents] = useState([]);
+  const [notifyUser, setNotifyUser] = useState();
 
   // roda somente na inicialização do componente
   useEffect(()=> {
@@ -34,6 +36,7 @@ const HomePage = () => {
 
   return (
     <MainContent>
+     {<Notification {...notifyUser} setNotifyUser={setNotifyUser} />}
       <Banner />
 
       {/* PRÓXIMOS EVENTOS */}

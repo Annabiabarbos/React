@@ -7,20 +7,22 @@ import ImageIllustrator from "../../components/ImageIllustrator/ImageIllustrator
 import TableTp from "./TableTP/TableTp";
 import Notification from "../../components/Notification/Notification";
 import TipoEventoImage from "../../assets/images/tipo-evento.svg";
-import {
-  Input,
-  Button,
-} from "../../components/FormComponents/FormComponents.jsx";
+import {Input, Button} from "../../components/FormComponents/FormComponents.jsx";
 import api, { eventsTypeResource } from "../../Services/Services";
+import Spinner from "../../components/Spinner/Spinner"
+//import { logDOM } from "@testing-library/react";
 
 const TiposEventoPage = () => {
   const [frmEdit, setFrmEdit] = useState(false); //está em modo edição?
   const [titulo, setTitulo] = useState("");
+  const [idEvento , setIdEvento] = useState (null)
   const [tiposEvento, setTiposEventos] = useState([]);
   const [notifyUser, setNotifyUser] = useState();
+  const [showSpinner, setShowSpinner] = useState(false);
 
   useEffect(() => {
     async function loadEventsType() {
+      setShowSpinner(true)
       try {
         const retorno = await api.get(eventsTypeResource);
         setTiposEventos(retorno.data);
@@ -29,17 +31,24 @@ const TiposEventoPage = () => {
         console.log("Erro na api");
         console.log(error);
       }
+      setShowSpinner(false)
     }
     loadEventsType();
   }, []);
 
   async function handleSubmit(e) {
     e.preventDefault(); //evita o submit do formulario
-    if (titulo.trim().length <= 3) {
-      alert("O título deve ter pelo menos 3 caracteres");
+    if (titulo.trim().length < 3) {
+      setNotifyUser({
+        titleNote: "Deu ruim!",
+        textNote: `Necessario ao menos três caracteres`,
+        imgIcon: "warning",
+        imgAlt:
+        "",
+        showMessage: true,
+      })
     }
-
-    try {
+    else try {
       const retorno = await api.post(eventsTypeResource, {
         titulo: titulo,
       });
@@ -49,40 +58,110 @@ const TiposEventoPage = () => {
       const buscaEventos = await api.get(eventsTypeResource);
 
       setTiposEventos(buscaEventos.data);
+
+      setNotifyUser({
+        titleNote: "Sucesso",
+        textNote: `${titulo} cadastrado com sucesso`,
+        imgIcon: "success",
+        imgAlt:
+          "Icone de ilustração de sucesso. Moça segurando um balão com simbolo de confirmação ok",
+        showMessage: true,
+      })
+      
     } catch (error) {
-      alert("Deu ruim no submit");
+      setNotifyUser({
+        titleNote: "Deu ruim",
+        textNote: `Não foi possivel cadastrar ${titulo}`,
+        imgIcon: "danger",
+        imgAlt:
+          "",
+        showMessage: true,
+      })
     }
   }
   /********************* EDITAR CADASTRO *********************/
   // mostra o formulário de edição
   async function showUpdateForm(idElement) {
     setFrmEdit(true);
+    setIdEvento(idElement)
     try {
       const retorno = await api.get(`${eventsTypeResource}/${idElement} `);
       setTitulo(retorno.data.titulo);
       console.log(retorno.data.titulo);
     } catch (error) {}
+
   }
   // cancela a tela/ação de edição (volta para o form de cadastro)
   function editActionAbort() {
     setFrmEdit(false);
     setTitulo("");
+    setIdEvento (null);
   }
   // cadastrar a atualização na api
-  function handleUpdate(e) {
+  async function handleUpdate(e) {
     e.preventDefault();
+    
+
+    try {
+      //atualizar na api
+      const retorno = await api.put (eventsTypeResource + "/" + idEvento , {
+        titulo: titulo
+      })
+      
+
+      if (retorno.status === 204) {
+        //reseta o state
+        /*setTitulo("")
+        setIdEvento (null)*/
+
+        //notificar o usuario
+        setNotifyUser({
+        titleNote: "Atualizado",
+        textNote: `${titulo} foi atualizado com sucesso`,
+        imgIcon: "success",
+        imgAlt:
+          "Icone de ilustração de sucesso. Moça segurando um balão com simbolo de confirmação ok",
+        showMessage: true,
+        });
+
+        //Atualizar os dados na tela 
+        const retorno = await api.get (eventsTypeResource);
+        setTiposEventos (retorno.data)
+
+        //Voltar pra tela de cadasro
+        editActionAbort();
+      }
+
+    } catch (error) {
+      setNotifyUser({
+        titleNote: "Deu ruim!",
+        textNote: `Não foi possivel atualizar ${titulo}`,
+        imgIcon: "danger",
+        imgAlt:
+          "",
+        showMessage: true,
+      })
+    }
   }
   /********************* APAGAR DADOS *********************/
   // apaga o tipo de evento na api
   async function handleDelete(idElement) {
-    if (window.confirm("Deseja mesmo deletar ?")) {
+    if (window.confirm("Deseja mesmo deletar?")) {
       try {
         const promise = await api.delete(`${eventsTypeResource}/${idElement} `);
 
-        alert(`Vamos apagar o evento de id: ${idElement}`);
+       
 
-        if (promise.status == 204) {
-          alert("O item foi deletado");
+        if (promise.status === 204) {
+        
+          setNotifyUser({
+            titleNote: "Deletado",
+            textNote: `Elemento deletado`,
+            imgIcon: "danger",
+            imgAlt:
+              "Homem segurando um botao com o simbolo X",
+            showMessage: true,
+          })
 
           const buscaEventos = await api.get(eventsTypeResource);
 
@@ -94,7 +173,7 @@ const TiposEventoPage = () => {
     }
   }
 
-  function theMagic() {
+  /*function theMagic() {
     setNotifyUser({
       titleNote: "Sucess",
       textNote: `Evento cadastrado com sucesso`,
@@ -103,11 +182,13 @@ const TiposEventoPage = () => {
         "Icone de ilustracao de sucesso. Moça segurando um balão com simbolo de confirmação ok",
       showMessage: true,
     });
-  }
+  }*/
 
   return (
     <>
       <Notification {...notifyUser} setNotifyUser={setNotifyUser} />
+       {/*SPINNER - Feito com position*/}
+       {showSpinner ? <Spinner  /> : null}
       <MainContent>
         {/*Listagem de tipos de evntos*/}
         <section className="cadastro-evento-section">
@@ -136,7 +217,8 @@ const TiposEventoPage = () => {
                         setTitulo(e.target.value);
                       }}
                     />
-                    {/*<span>{titulo}</span>*/}
+                    
+                    {/*<span>{idEvento}</span>*/}
                     <Button
                       textButton="Cadastrar"
                       id="cadastrar"
@@ -159,7 +241,7 @@ const TiposEventoPage = () => {
                         setTitulo(e.target.value);
                       }}
                     />
-                    {/*<span>{titulo}</span>*/}
+                    {<span>{idEvento}</span>}
                     <div className="buttons-editbox">
                       <Button
                         textButton="Atualizar"
