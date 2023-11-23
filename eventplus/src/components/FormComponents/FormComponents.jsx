@@ -41,7 +41,7 @@ export const Button = ( props ) => {
         className = {` button-component ${props.additionalClass}`}
         onClick = {props.manipulationFunction}
         >
-            {props.textButton}
+        {props.textButton}
         </button>
     );
 }

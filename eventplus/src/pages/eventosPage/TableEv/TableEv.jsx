@@ -3,7 +3,7 @@ import "./TableEv.css";
 import editPen from "../../../assets/images/edit-pen.svg";
 import trashDelete from "../../../assets/images/trash-delete.svg";
 
-const TableEv = ({ dados, fnDelete = null, fnUpdate = null }) => {
+const TableEv = ({ dados }) => {
   return (
     <table className="table-data">
       <thead className="table-data__head">
@@ -32,27 +32,8 @@ const TableEv = ({ dados, fnDelete = null, fnUpdate = null }) => {
               <td className="table-data__data table-data__data--big">
                 {ev.nomeEvento}
               </td>
-              <td className="table-data__data table-data__data--little">
-                <img className="table-data__icon"
-                src = {editPen} alt= ""
-                onClick = {() =>{
-                 fnUpdate(ev.idEvento)
-                }} 
-
-                />
-
-
-              </td>
-
-              <td className="table-data__data table-data__data--little">
-              <img 
+              <td>
                 
-                className="table-data__icon" 
-                src={trashDelete} alt="" 
-                onClick={() => {
-                fnDelete (ev.idEvento)
-                }}
-                />
               </td>
             </tr>
           );

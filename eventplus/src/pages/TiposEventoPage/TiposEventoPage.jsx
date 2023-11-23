@@ -55,7 +55,7 @@ const TiposEventoPage = () => {
       try {
          // Chamada para a API para cadastrar um novo tipo de evento
         const retorno = await api.post(eventsTypeResource, {
-          titulo: titulo,
+          titulo: titulo
         });
 
         setTitulo(""); //Limpa o campo de título após o cadastro
