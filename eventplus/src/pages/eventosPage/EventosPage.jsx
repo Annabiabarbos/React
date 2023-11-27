@@ -69,7 +69,7 @@ const EventosPage = () => {
 
   function handleUpdate(e) {}
 
-  function handleDelete(params) {}
+  function handleDelete() {}
 
   return (
     <>

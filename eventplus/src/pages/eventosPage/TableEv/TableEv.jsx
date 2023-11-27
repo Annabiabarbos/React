@@ -26,18 +26,11 @@ const TableEv = ({ dados }) => {
         </tr>
       </thead>
       <tbody>
-        {dados.map((ev) => {
-          return (
-            <tr className="table-data__head-row" key={ev.idEvento}>
-              <td className="table-data__data table-data__data--big">
-                {ev.nomeEvento}
-              </td>
-              <td>
-                
-              </td>
-            </tr>
-          );
-        })}
+       {/*{dados.map((ev) => {
+        return(
+          <tr className="table-data__head-row" key={ev.idEvento}></tr>
+        )
+       })}*/}
       </tbody>
     </table>
   );

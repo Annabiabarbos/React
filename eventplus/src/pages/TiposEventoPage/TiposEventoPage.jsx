@@ -236,7 +236,7 @@ const TiposEventoPage = () => {
                         setTitulo(e.target.value);
                       }}
                     />
-                    {<span>{idEvento}</span>}
+                    {/*<span>{idEvento}</span>*/}
                     <div className="buttons-editbox">
                       <Button
                         textButton="Atualizar"
