@@ -1,13 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./EventosPage.css";
-import Titulo from "../../components/Titulo/Titulo";
+import Titulo from "../../components/Title/Title";
 import MainContent from "../../components/MainContent/MainContent";
 import Container from "../../components/Container/Container";
 import ImageIllustrator from "../../components/ImageIllustrator/ImageIllustrator";
 import Notification from "../../components/Notification/Notification";
 import { Input, Button } from "../../components/FormComponents/FormComponents";
 import Spinner from "../../components/Spinner/Spinner";
-import api, { eventsResource } from "../../Services/Services";
+import api, { eventsResource } from "../../Services/Service";
 import TipoEventoImage from "../../assets/images/evento.svg";
 import TableEv from "./TableEv/TableEv";
 

@@ -1,80 +1,75 @@
 import React from 'react';
-import './FormComponents.css';
+import './FormComponents.css'
 
-export const Input = ({
+export const Input = ( {
     type,
-    id, 
+    id,
     value,
     required,
-    additionalClass,
     name,
     placeholder,
-    manipulationFunction
-}) => {
+    manipulationFunction,
+    additionalClass = ""
+} ) => {
     return (
-       <input 
-       type= {type}
-       id={id}
-       name={name} 
-       value = {value}
-       required = {required ? "requiered" : ""}
-       placeholder = {placeholder}
-       onChange = {manipulationFunction}
-       className = {`input-component ${additionalClass}`}
-       autoComplete = "off"
-       />
-
+        <input 
+            type={type} 
+            id={id} 
+            name={name} 
+            value={value} 
+            required={required ? "required" : ""} 
+            className={`input-component ${additionalClass}`}
+            placeholder={placeholder}
+            onChange={manipulationFunction}
+            autoComplete="off"
+        />
     );
 };
 
-export const label = ({htmlFor , labelText}) => {
-    return <label htmlFor={htmlFor}>{labelText} </label>
+export const Label = ({htmlFor, labelText}) => {
+    return <label htmlFor={htmlFor}>{labelText}</label>
 }
 
-//componente criado na forma tradicional props ao invés do destructuring
+// componente criado na forma tradicional props ao invés do destructuring
 export const Button = ( props ) => {
     return (
         <button
-        id= {props.id}
-        name = {props.name}
-        type = {props.type}
-        className = {` button-component ${props.additionalClass}`}
-        onClick = {props.manipulationFunction}
+            id={props.id}
+            name={props.name}
+            type={props.type}
+            className={`button-component ${props.additionalClass}`}
+            onClick={props.manipulationFunction}
         >
-        {props.textButton}
+            {props.textButton}
         </button>
     );
 }
 
-/*options = [
-    {value }
-]; //veio do banco de dados pela api*/
-
-export const Select = (
-    requiered,
+export const Select = ({
+    required,
     id,
     name,
-    options,
+    options = [],
     manipulationFunction,
     additionalClass = "",
     defaultValue
-
-) => {
-    return(
+}) => {
+    return (
         <select 
-        name = {name} 
-        id= {id}
-        required = {requiered}
-        className = {`input-component ${additionalClass}`}
-        onChange = {manipulationFunction}
-        value = {defaultValue}
+            name={name} 
+            id={id}
+            required={required}
+            className={`input-component ${additionalClass}`}
+            onChange={manipulationFunction}
+            value={defaultValue}
+
         >
-            <option value = "">Selecione</option>
-            {options.map ((o) => {
+            <option value="">Selecione</option>
+            {options.map((o) =>{
                 return (
-                    <option key= {Math.random()} value={o.value}>{o.text}</option>
+                    <option key={Math.random()} value={o.value}>{o.text}</option>
                 );
             })}
         </select>
-    )
+    );
 }
