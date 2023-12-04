@@ -7,11 +7,12 @@ import ImageIllustrator from "../../components/ImageIllustrator/ImageIllustrator
 import Notification from "../../components/Notification/Notification";
 import { Input, Button } from "../../components/FormComponents/FormComponents";
 import Spinner from "../../components/Spinner/Spinner";
-import api, { eventsResource } from "../../Services/Service";
+import api, {eventsResource} from "../../Services/Service"
+//import api, { eventsResource } from "../../Services/Service";
 import TipoEventoImage from "../../assets/images/evento.svg";
 import TableEv from "./TableEv/TableEv";
 
-const EventosPage = () => {
+  const EventosPage = () => {
   const [notifyUser, setNotifyUser] = useState();
   const [showSpinner, setShowSpinner] = useState (false)
   const [evento, setEvento] = useState([]);

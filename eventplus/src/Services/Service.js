@@ -11,6 +11,8 @@ import axios from 'axios';
  */
 export const eventsResource = '/Evento';
 
+export const MyeventsResource = '/PresencasEventoListarMinhas/';
+
 /**
  * Rota para o recurso Próximos Eventos
  */

@@ -13,7 +13,7 @@ import Notification from "../../components/Notification/Notification";
 import { nextEventResource } from "../../Services/Service";
 
 
-const HomePage = () => {
+ const HomePage = () => {
   const [nextEvents, setNextEvents] = useState([]);
   const [notifyUser, setNotifyUser] = useState(); //Componente Notification
 
