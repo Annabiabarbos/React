@@ -7,14 +7,13 @@ import Container from "../../components/Container/Container";
 import { Select } from "../../components/FormComponents/FormComponents";
 import Spinner from "../../components/Spinner/Spinner";
 import Modal from "../../components/Modal/Modal";
-import api, { eventsResource } from "../../Services/Service";
+import api, { eventsResource, MyeventsResource } from "../../Services/Service";
 import Toggle from "../../components/Toggle/Toggle";
 import "./EventosAlunoPage.css";
 import { UserContext } from "../../context/AuthContext";
 
 const EventosAlunoPage = () => {
   // state do menu mobile
-  const [exibeNavbar, setExibeNavbar] = useState(false);
   const [eventos, setEventos] = useState([]);
 
   // select mocado
@@ -23,37 +22,71 @@ const EventosAlunoPage = () => {
     { value: 2, text: "Meus eventos" },
   ]);
 
-  const [tipoEvento, setTipoEvento] = useState(1); //código do tipo do Evento escolhido
+  const [tipoEvento, setTipoEvento] = useState("1"); //código do tipo do Evento escolhido
   const [showSpinner, setShowSpinner] = useState(false);
-  const [showModal, setShowModal] = useState(
-    {idEvento : "1234" , nomeEvento : "Evento de JavaScript" , dataEvento: ""},
-    {idEvento : "1234" , nomeEvento : "Evento de JavaScript" , dataEvento: ""}
-    )
+  const [showModal, setShowModal] = useState();
 
   // recupera os dados globais do usuário
   const { userData, setUserData } = useContext(UserContext);
 
   useEffect(() => {
-  setShowSpinner (true);
-  setEventos([]) //zerar a array de eventos 
-  //loadEventsType();
-    }, [tipoEvento]);
+    async function loadEventsType() {
+      setShowSpinner(true);
+      //setEventos([]);
+      if (tipoEvento === "1") {
+        //chamar a api com todos os eventos
+        try {
+          //listar os eventos (Eventos)
+          const retornoEventos = await api.get(eventsResource);
+          setEventos(retornoEventos.data);
 
-  async function loadEventsType() {
+          console.log(retornoEventos.data);
+        } catch (error) {
+          console.log("Erro na api");
+          console.log(error);
+        }
+      } else if (tipoEvento === "2") {
+        //chamar a api dos meus eventos
 
-    if (tipoEvento == 1 ){ //chamar a api com todos os eventos
-      try {
-        const retornoEventos = await api.get (eventsResource);
-        setEventos (retornoEventos.data);
-      } catch (error) {
-        console.log("Erro na api");
-        console.log("");
+        try {
+          const retornoEventos = await api.get(
+            `${MyeventsResource}/${userData.userId}`
+          );
+          console.clear()
+          console.log("Minhas presenças");
+          // console.log(retornoEventos.data);
+
+          const arrEventos = []; //array vazia
+
+          retornoEventos.data.forEach((e) => {
+            arrEventos.push(e.evento);
+          });
+
+          //  console.log(arrEventos);
+          setEventos(arrEventos);
+        } catch (error) {
+          console.log("Erro na api");
+          // console.log(error);
+        }
+      } else {
+        setEventos([]);
       }
-    }else { //chamar a api dos meus eventos
-      
+
+      setShowSpinner(false);
     }
-  
-    
+
+    loadEventsType();
+  }, [tipoEvento]);
+
+  const verificaPresenca = (arrAllEvents, eventsUser) => {
+    for (let  x = 0; x < arrAllEvents.length; x++) {
+      for (let i = 0; i < eventsUser.length; i ++) {
+        if (arrAllEvents [x]. idEvento === eventsUser [i].idEvento){
+          arrAllEvents[x]. situacao = true;
+          break;
+       }
+      }
+    }
   }
 
   // toggle meus eventos ou todos os eventos
@@ -89,15 +122,15 @@ const EventosAlunoPage = () => {
             name="tipo-evento"
             required={true}
             options={quaisEventos} // aqui o array dos tipos
-            onChange={(e) => myEvents(e.target.value)} // aqui só a variável state
+            manipulationFunction={(e) => myEvents(e.target.value)} // aqui só a variável state
             defaultValue={tipoEvento}
-            className="select-tp-evento"
+            additionalClass="select-tp-evento"
           />
           <Table
             dados={eventos}
             fnConnect={handleConnect}
             fnShowModal={() => {
-              showHideModal();//Inverte o valor de true pra false
+              showHideModal(); //Inverte o valor de true pra false
             }}
           />
         </Container>
@@ -116,5 +149,4 @@ const EventosAlunoPage = () => {
     </>
   );
 };
-
 export default EventosAlunoPage;
