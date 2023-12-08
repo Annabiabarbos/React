@@ -1,14 +1,16 @@
 import React from "react";
 import comentaryIcon from "../../../assets/images/comentary-icon.svg";
 import trashDelete from "../../../assets/images/trash-delete.svg";
-import { dateFormateDbToView } from "../../../Utils/stringFunctions";
+// import { dateFormateDbToView } from "../../../Utils/stringFunctions";
 import ToggleSwitch from "../../../components/Toggle/Toggle";
+
+
 // importa a biblioteca de tootips ()
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 
 // import trashDelete from "../../../assets/images/trash-delete.svg";
-import "./TableEvA.css";
+import "./TableEva.css";
 
 const Table = ({ dados, fnConnect = null, fnShowModal = null }) => {
   return (
@@ -52,23 +54,27 @@ const Table = ({ dados, fnConnect = null, fnShowModal = null }) => {
                 />
               </td> */}
               {/* <td className="tbal-data__data tbal-data__data--big">
-                {e.tiposEvento.titulo}
+                {e.titulo}
               </td> */}
               <td className="tbal-data__data tbal-data__data--big tbal-data__btn-actions">
-                {/* {e.dataEvento} */}
-                {dateFormateDbToView(e.dataEvento)}
+                {new Date(e.dataEvento).toLocaleDateString()}
               </td>
 
               <td className="tbal-data__data tbal-data__data--big tbal-data__btn-actions">
                 <img
                   className="tbal-data__icon"
-                  idevento={e.idEvento}
+                  //idevento={e.idEvento}
                   src={comentaryIcon}
                   alt=""
-                  onClick={fnShowModal}
+                  onClick= {() => {fnShowModal (e.idEvento)}}
                 />
 
-                <ToggleSwitch manipulationFunction={fnConnect} />
+                <ToggleSwitch manipulationFunction={() => {
+                  fnConnect(e.idEvento,
+                    e.situacao ? "unconnect" : "connect",
+                    e.situacao ? e.idPresencaEvento : null 
+                  )
+                }} toggleActive={e.situacao} />
               </td>
             </tr>
           );

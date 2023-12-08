@@ -1,26 +1,42 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import trashDelete from "../../assets/images/trash-delete-red.png";
+import { UserContext } from "../../context/AuthContext";
 
 import { Button, Input } from "../FormComponents/FormComponents";
 import "./Modal.css";
 
+
+
 const Modal = ({
   modalTitle = "Feedback",
-  comentaryText = "Não informado. Não informado. Não informado.",
+  commentaryText = "Não informado.",
   userId = null,
+  IdEvento = null,
   showHideModal = false,
   fnDelete = null,
-  fnNewCommentary = null
-
+  fnGet = null,
+  fnPost = null,
+  fnNewCommentary = null,
 }) => {
+  const { userData } = useContext (UserContext)
+  const {comentarioDesc , setComentarioDesc} = useState("")
+
+  
+  useEffect(() => {
+    async function loadDados() {
+      fnGet(userData.userId, userData.idEvento);
+    }
+    loadDados()
+  });
 
   return (
     <div className="modal">
       <article className="modal__box">
-        
         <h3 className="modal__title">
           {modalTitle}
-          <span className="modal__close" onClick={()=> showHideModal(true)}>x</span>
+          <span className="modal__close" onClick={() => showHideModal(true)}>
+            x
+          </span>
         </h3>
 
         <div className="comentary">
@@ -29,10 +45,12 @@ const Modal = ({
             src={trashDelete}
             className="comentary__icon-delete"
             alt="Ícone de uma lixeira"
-            onClick={fnDelete}
+            onClick={() => {
+              fnDelete(userId);
+            }}
           />
 
-          <p className="comentary__text">{comentaryText}</p>
+          <p className="comentary__text">{commentaryText}</p>
 
           <hr className="comentary__separator" />
         </div>
@@ -40,12 +58,19 @@ const Modal = ({
         <Input
           placeholder="Escreva seu comentário..."
           className="comentary__entry"
+          value = {comentarioDesc}
+          manipulationFunction = {(e) => {
+            setComentarioDesc (e.target.value)
+          }}
+          
         />
 
         <Button
-          buttonText="Comentar"
-          className="comentary__button"
-          onClick={fnNewCommentary}
+          textButton="Comentar"
+          additionalClass="comentary__button"
+          manipulationFunction={() => {
+          fnPost(comentarioDesc.trim(), userData.userId, userData.IdEvento)
+          }}
         />
       </article>
     </div>

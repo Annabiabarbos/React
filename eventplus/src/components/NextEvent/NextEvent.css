@@ -1,16 +1,16 @@
 
 @font-face {
   font-family: Poppins-Regular;
-  src: url(../../assets/fonts/Poppins/Poppins-Regular.ttf);
+  src: url(../../assets/Fonts/Poppins/Poppins-Regular.ttf);
 }
 
 @font-face {
   font-family: Poppins-Medium;
-  src: url(../../assets/fonts/Poppins/Poppins-Medium.ttf);
+  src: url(../../assets/Fonts/Poppins/Poppins-Medium.ttf);
 }
 
 
-.tooltip {
+.tootip {
   color: #fff !important;
   background-color: #B51D44 !important;
 }
@@ -25,11 +25,6 @@
   border: 1px solid var(--color-blue-red);
   border-radius: 5px;
   overflow: auto;
-}
-
-/* Largura da barra de rolagem */
-.event-card::-webkit-scrollbar {
-  width: 0px;
 }
 
 .event-card__title {

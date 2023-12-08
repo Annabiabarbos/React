@@ -1,22 +1,30 @@
-/*import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import Container from '../Container/Container.jsx'
+import Nav from '../Nav/Nav'
+import PerfilUsuario from '../PerfilUsuario/PerfilUsuario'
+import menubar from '../../assets/images/menubar.png'
 
+import './Header.css';
 const Header = () => {
     return (
-        <header>
+        <header className='headerpage'>
+
             <nav>
-                <Link to="/">Home</Link>
+                <Link to="/"> Home </Link>
                 <br />
-                <Link to="/tipo-eventos">Tipo Eventos</Link>
+                <Link to="/login">Login </Link>
                 <br />
-                <Link to="/eventos">Eventos</Link>
+                <Link to="/tipo-eventos">Tipo Eventos </Link>
                 <br />
-                <Link to="/login">Login</Link>
+                <Link to="/eventos"> Eventos </Link>
                 <br />
-                <Link to="/testes">Testes</Link>
+                <Link to="/testes"> Teste </Link>
+
             </nav>
+            
         </header>
+
     );
 };
 
-export default Header;*/
+export default Header;

@@ -1,16 +1,16 @@
 @font-face {
     font-family: Poppins-SemiBold;
-    src: url(../../assets/fonts/Poppins/Poppins-SemiBold.ttf);
+    src: url(../../assets/Fonts/Poppins/Poppins-SemiBold.ttf);
   }
   
   @font-face {
     font-family: Poppins-Medium;
-    src: url(../../assets/fonts/Poppins/Poppins-Medium.ttf);
+    src: url(../../assets/Fonts/Poppins/Poppins-Medium.ttf);
   }
   
   @font-face {
     font-family: Poppins-Regular;
-    src: url(../../assets/fonts/Poppins/Poppins-Regular.ttf);
+    src: url(../../assets/Fonts/Poppins/Poppins-Regular.ttf);
   }
   
   .modal {

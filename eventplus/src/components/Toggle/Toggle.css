@@ -1,3 +1,4 @@
+
 .toggle {
     position: relative;
     display: flex;
@@ -30,8 +31,7 @@
 
 .toggle__switch-check { display: none;}
 
- .toggle--active {
-    /* justify-content: flex-end; */
+.toggle--active{
     border: 2px solid #B51D44;
     background-color: #B51D44;
 }
