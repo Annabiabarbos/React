@@ -37,7 +37,7 @@ const NextEvent = ({ title, description, eventDate, idEvent }) => {
         }}
         className="event-card__connect-link"
       >
-        Conectar
+        Ver mais
       </a>
     </article>
   );

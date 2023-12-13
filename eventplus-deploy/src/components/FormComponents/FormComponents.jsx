@@ -51,7 +51,7 @@ export const Select = ({
     name,
     options = [],
     manipulationFunction,
-    additionalClass = "",
+    additionalClass ="",
     defaultValue
 }) => {
     return (

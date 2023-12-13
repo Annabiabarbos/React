@@ -10,7 +10,7 @@ import "./LoginPage.css";
 import { UserContext, userDecodeToken } from "../../context/AuthContext";
 
 const LoginPage = () => {
-  const [user, setUser] = useState({ email: "admin@admin.com", senha: "12345" });
+  const [user, setUser] = useState({ email: "annaadmin@admin.com", senha: "13579" });
   //importa os dados globais do usuário
   const { userData, setUserData } = useContext(UserContext);
   const navigate = useNavigate();

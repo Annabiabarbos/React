@@ -92,7 +92,7 @@ export default function EventosPaage(props) {
           dataEvento: frmEditData.dataEvento,
           descricao: frmEditData.descricao,
           idInstituicao: frmEditData.idInstituicao,
-          idTipoEvento: frmEditData.idTipoEvento,
+          idTipoEvento: frmEditData.idTipoEvento
         }
       );
 
