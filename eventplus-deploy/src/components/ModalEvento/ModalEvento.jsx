@@ -1,61 +1,56 @@
-// import React, { useState } from "react";
-// import './ModalEvento.css' 
+import React, { useState } from "react";
+import "./ModalEvento.css";
+import Title from "../Title/Title";
 
-// const ModalEvento = ({
-//  modalTitle = "Sobre o Evento",
-//   description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit rerum sed, dignissimos illum cum quibusdam non voluptates autem ipsam corrupti aut, nesciunt maxime. Quidem neque doloribus iusto ratione cumque dolorem",
-//   moreInformations = "Mais informações",
-//   eventName = {setNomeEvento},
-//   eventTeacher = {professorEvento},
-//   eventDate = {dataEvento},
-//   eventPlace = {lugar}
-// }) => {
-//   /*const [nomeEvento, setNomeEvento] = useState("");
-//   const [dataEvento, setDataEvento] = useState("");
-//   const [lugar, setEvento] = useState("");
-//   const [professorEvento, setProfessorEvento] = useState("");*/
 
-//   return (
-//     <div className="event--modal">
-//       {/*Nome do evento*/}
-//       <Title>{modalTitle}</Title>
+const ModalEvento = ({
+  modalTitle = "Sobre o Evento",
+  description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit rerum sed, dignissimos illum cum quibusdam non voluptates autem ipsam corrupti aut, nesciunt maxime. Quidem neque doloribus iusto ratione cumque dolorem",
+  moreInformations = "Mais informações",
+  eventName ="",
+  eventTeacher ="",
+  eventDate = "",
+  eventPlace = "",
+}) => {
+  /*const [nomeEvento, setNomeEvento] = 
+  const [dataEvento, setDataEvento] = 
+  const [lugar, setEvento] = 
+  const [professorEvento, setProfessorEvento] = */
 
-//       {/*Linha abaixo do titulo*/}
-//       <hr />
+  return (
+    <div className="event--modal">
+      {/*Nome do evento*/}
+      <h1 className="event--modal__title">{modalTitle}</h1>
 
-//       {/*Pular linha */}
-//       <br />
+      {/*Linha abaixo do titulo*/}
+      <hr />
 
-//       <>
-//         {/*Descricao do evento */}
-//         <p>{description}</p>
-//       </>
+      {/*Pular linha */}
+      <br />
 
-//       <div>
-        
       
-//         <title>{moreInformations}</title>
+        {/*Descricao do evento */}
+        <p>{description}</p>
 
-//         <p>Nome do Evento</p>
-//         <span>{eventName}</span>
+      <div>
+        <h2>{moreInformations}</h2>
 
-//         <p>professor do Evento</p>
-//         <span>{eventTeacher}</span>
+        <p>Nome do Evento</p>
+        <span>{eventName}</span>
 
-//         <p>Data e hora </p>
-//         <span>{eventDate}</span>
+        <p>professor do Evento</p>
+        <span>{eventTeacher}</span>
 
-//         <p>Local do Evento</p>
-//         <span>{eventPlace}</span>
+        <p>Data e hora </p>
+        <span>{eventDate}</span>
 
-//         <Button
-//         textButton = "Conectar"
-//         />
+        <p>Local do Evento</p>
+        <span>{eventPlace}</span>
 
-//       </div>
-//     </div>
-    
-//   );
-// };
+        <button textButton="Conectar" />
+      </div>
+    </div>
+  );
+};
 
-// export default ModalEvento;
+export default ModalEvento;

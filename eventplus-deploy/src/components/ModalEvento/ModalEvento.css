@@ -1,0 +1,33 @@
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url(../../assets/fonts/Poppins/Poppins-SemiBold.ttf);
+  }
+  
+  @font-face {
+    font-family: Poppins-Medium;
+    src: url(../../assets/fonts/Poppins/Poppins-Medium.ttf);
+  }
+  
+  @font-face {
+    font-family: Poppins-Regular;
+    src: url(../../assets/fonts/Poppins/Poppins-Regular.ttf);
+  }
+
+
+.event--modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: red;
+    color: white;
+    z-index: 10000;
+}
+
+.event--modal__title{
+    text-align: center;
+    font-family: Poppins-SemiBold;
+    text-transform: uppercase;
+}
+

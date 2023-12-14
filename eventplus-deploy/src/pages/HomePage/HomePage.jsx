@@ -11,6 +11,7 @@ import Container from "../../components/Container/Container";
 import api from "../../Services/Service";
 import Notification from "../../components/Notification/Notification";
 import { nextEventResource } from "../../Services/Service";
+import ComentariosEvento, { loadCommentaryEvents} from "../ComentariosEvento/ComentariosEvento";
 
 
 const HomePage = () => {
