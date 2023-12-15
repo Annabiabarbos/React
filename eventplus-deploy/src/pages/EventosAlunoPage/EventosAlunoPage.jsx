@@ -233,7 +233,7 @@ const EventosAlunoPage = () => {
         alert("Desconectado do evento");
       }
     } catch (error) {
-      console.log("Erro ao desconecar o usuário do evento");
+      console.log("Erro ao desconectar o usuário do evento");
       console.log(error);
     }
   }

@@ -20,14 +20,59 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: red;
-    color: white;
-    z-index: 10000;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 .event--modal__title{
+    margin-top: 10px;
     text-align: center;
     font-family: Poppins-SemiBold;
     text-transform: uppercase;
+    color: #B51D44;
 }
+
+.event--modal__line{
+  display: flex;
+  text-align: center;
+  position: center;
+  height: 1px;
+}
+
+.event--modal__button{
+  width: 356px;
+  height: 45px;
+  border-radius: 5px;
+  font-family: poppins;
+  background-color: #B51D44;
+  color: white;
+  border: none  ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.event--modal__description{
+text-align: center;
+}
+
+.event--modal__description-line{
+  border-color: #B51D44; 
+}
+
+.event--modal__more-informations{
+text-align: center;
+font-family: Poppins-SemiBold;
+text-transform: uppercase;
+}
+
+.event--modal__close{
+  margin: auto;
+  top: -20px;
+  font-size: 24px;
+  color : black;
+  justify-items: flex-end;
+}
+
+
 

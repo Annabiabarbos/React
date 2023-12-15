@@ -54,7 +54,7 @@ export default function EventosPaage(props) {
         const tpEventosModificado = [];
         //retorno da api (array tipo de eventos)
         promiseTipoEventos.data.forEach((event) => {
-          tpEventosModificado.push({ value: event.idTipoEvento, text: event.titulo });
+          tpEventosModificado.push({ value: event.idTipoEvento, text: event.Title });
         });
 
         setTiposEvento(tpEventosModificado);
@@ -266,7 +266,7 @@ export default function EventosPaage(props) {
     const arrAux = [];
 
     arrEvents.forEach((event) => {
-      arrAux.push({ value: event.idTipoEvento, text: event.titulo });
+      arrAux.push({ value: event.idTipoEvento, text: event.Title });
     });
 
     return arrAux;
